@@ -23,7 +23,7 @@ const Search = () => {
         setTimeout(() => {
             document.getElementById('loader').classList = "loader-container d-none";
         }, 4000)
-    }, []);
+    }, [isSearch]);
 
     const getPays = async () => {
         const requete = await fetch(
@@ -68,9 +68,10 @@ const Search = () => {
             query
         )
         const response = await req.json();
+        var number_of_page;
         if (window.sessionStorage.getItem('token')) {
             setUsers(response.users);
-            var number_of_page = calculate_total_page(response.total_count, items_per_page);
+            number_of_page = calculate_total_page(response.total_count, items_per_page);
             setTotalCount(response.total_count);
             if (number_of_page > 100) {
                 number_of_page = 100;
@@ -85,13 +86,13 @@ const Search = () => {
                 prevNext: true,
                 onClick: function (page) {
                     setCurrentPage(page);
-                    getUsers(page);
+                    getUsers(currentPage);
                 }
             });
         }
         else {
             setUsers(response.items);
-            var number_of_page = calculate_total_page(response.total_count, items_per_page);
+            number_of_page = calculate_total_page(response.total_count, items_per_page);
             setTotalCount(response.total_count);
             if (number_of_page > 100) {
                 number_of_page = 100;

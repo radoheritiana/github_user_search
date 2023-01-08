@@ -13,10 +13,13 @@ export default class Accueil extends Component {
                     <div className="row">
                         <div className="col text-center">
                             <h4>If you have a github acount</h4>
-                            <a className="btn btn-warning mt-3 mb-3" 
-                            href="https://github.com/login/oauth/authorize?client_id=Iv1.3557116d6bcf2043">
-                                Click here
-                            </a>
+                            <button className="btn btn-warning mt-3 mb-3" disabled>
+                                <a className="nav-link" 
+                                href="https://github.com/login/oauth/authorize?client_id=Iv1.3557116d6bcf2043">
+                                    Click here
+                                </a>
+                            </button>
+                            <p className="text-muted">*under maintenance</p>
                             <p><b>Advantage: </b>limit of requests per minute : 30</p>
                         </div>
                         <div className="col text-center">
